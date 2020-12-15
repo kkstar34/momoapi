@@ -16,6 +16,10 @@ trait Configurations
      * @param $options
      * @return static
      */
+
+    //tr
+
+
     public static function create($options) {
         return new static($options);
     }
