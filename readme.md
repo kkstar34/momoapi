@@ -34,6 +34,7 @@ La méthode recommandée pour installer PackageMomo est [composer](http://getcom
 
 ```TERMINAL
 composer require kouyatekarim/momoapi
+composer install
 ```
 Vous pouvez maintenant ajouter l'autoloader et vous aurez accès à la bibliothèque:
 n'oublier surtout pas de mettre 
