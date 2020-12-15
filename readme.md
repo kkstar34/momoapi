@@ -34,7 +34,7 @@ La méthode recommandée pour installer PackageMomo est [composer](http://getcom
 
 ```TERMINAL
 composer require kouyatekarim/momoapi
-composer install
+
 ```
 Vous pouvez maintenant ajouter l'autoloader et vous aurez accès à la bibliothèque:
 n'oublier surtout pas de mettre si c'est un projet en php natif
@@ -55,7 +55,13 @@ pour un projet avec un framework require 'vendor/autoload' n'est pas à faire
 
 ## Utilisation
 ### Créer une instance de produit
+Si vous travaillez avec **LARAVEL** allez y avant toute chose dans []'vendor/kouyatekarim/momoapi/src/products/product.php' 
+changer à la ligne 17 realpath en base_path ainsi que dans []'vendor/kouyatekarim/momoapi/src/traits/SandboxUserProvisioning.php'.
 
+Si vous travaillez avec du php natif vous pouvez laisser comme c'est.
+
+si vous travaillez un autre framework php, si vous avez une erreur de path verifiez ces deux fichiers []'vendor/kouyatekarim/momoapi/src/traits/SandboxUserProvisioning.php',
+[]'vendor/kouyatekarim/momoapi/src/products/product.php'.
 ```php
 <?php
 use Kouyatekarim\Momoapi\Products\Collection;
