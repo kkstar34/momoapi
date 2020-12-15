@@ -8,7 +8,7 @@
 namespace Kouyatekarim\Momoapi\Traits;
 use Kouyatekarim\Momoapi\Responses\ApiKey;
 use Kouyatekarim\Momoapi\Responses\ApiUser;
-require_once $path = realpath('vendor/pear/http_request2/HTTP/Request2.php');
+require_once $path = base_path('vendor/pear/http_request2/HTTP/Request2.php');
 
 
 /**

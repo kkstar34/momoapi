@@ -8,13 +8,13 @@
 
 namespace Kouyatekarim\Momoapi\Products;
 
-require 'vendor/autoload.php';
+
 // use Kouyatekarim\Momoapi\Responses\Balance;
 use Kouyatekarim\Momoapi\Responses\Token;
 use Kouyatekarim\Momoapi\Responses\TransactionStatus;
 use Kouyatekarim\Momoapi\Traits\Configurations;
 use Kouyatekarim\Momoapi\Traits\SandboxUserProvisioning;
-require_once $path = realpath('vendor/pear/http_request2/HTTP/Request2.php');
+require_once $path = base_path('vendor/pear/http_request2/HTTP/Request2.php');
 
 
 
@@ -316,8 +316,11 @@ abstract class Product
 
             $response = $request->send();
             
-        var_dump($response);
-        die('e');
+            
+          
+
+            var_dump($response);
+            
          
           
         }
@@ -338,21 +341,45 @@ abstract class Product
      * @return TransactionStatus
      * @throws \Exception
      */
-    protected function getTransactionStatus($paymentRef) {
+    public function getTransactionStatus($paymentRef) {
+
         if(!$this->accessToken)
-            throw new \InvalidArgumentException("accessToken should be specified");
 
-        try {
-            $response = $this->newClient()->get($this->transactionUrl() . "/" . $paymentRef, [
-                'headers' => [
-                    'X-Target-Environment' => $this->environment,
-                    'Authorization' => 'Bearer ' . $this->accessToken
-                ]
-            ]);
+        throw new \InvalidArgumentException("accessToken should be specified");
 
-            return TransactionStatus::create(json_decode($response->getBody()->getContents(), true));
-        } catch (\Exception $exception) {
-            throw new \Exception($exception->getMessage());
+
+        $request = new \Http_Request2($this->transactionUrl(). "/" . $paymentRef);
+        $url = $request->getUrl();
+        
+        $headers = array(
+            // Request headers
+            'Authorization' => 'Bearer '. $this->accessToken->getAccessToken(),
+            'X-Target-Environment' => $this->environment,
+            'Ocp-Apim-Subscription-Key' => $this->subscriptionKey,
+        );
+        
+        $request->setHeader($headers);
+        
+        $parameters = array(
+            // Request parameters
+        );
+        
+        $url->setQueryVariables($parameters);
+        
+        $request->setMethod(\HTTP_Request2::METHOD_GET);
+        
+        // Request body
+        //$request->setBody("{body}");
+        
+        try
+        {
+            $response = $request->send();
+            return TransactionStatus::create(json_decode($response->getBody()));
         }
+        catch (HttpException $ex)
+        {
+            echo $ex;
+        }
+        
     }
 }

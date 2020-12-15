@@ -1,10 +1,12 @@
 {
     "name": "kouyatekarim/momoapi",
     "description": "Un package simple en php pour l'integration de l'api MTN Mobile Money",
+    "license": "MIT",
     "require": {
 
         
             "pear/http_request2": "^2.4.2"
+            
       
         
     },

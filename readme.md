@@ -37,7 +37,7 @@ composer require kouyatekarim/momoapi
 composer install
 ```
 Vous pouvez maintenant ajouter l'autoloader et vous aurez accès à la bibliothèque:
-n'oublier surtout pas de mettre 
+n'oublier surtout pas de mettre si c'est un projet en php natif
 
 ```php
 <?php
@@ -50,6 +50,8 @@ require 'vendor/autoload.php';
 <?php
 require 'vendor/autoload.php';
 ```
+
+pour un projet avec un framework require 'vendor/autoload' n'est pas à faire
 
 ## Utilisation
 ### Créer une instance de produit
@@ -168,7 +170,7 @@ $product->requestToPay($externalId, $partyId, $amount, $currency, $payerMessage 
 
 ```php
 <?php
-require 'vendor/autoload.php';
+require 'vendor/autoload.php'; // à enlever si vous travailler avec un framework
 use Kouyatekarim\Momoapi\Products\Collection;
 
 $xReferenceId = "afd59405-1bbe-4928-99d2-0c7060956358"; // à générer sur le site [UUID](https://www.uuidgenerator.net/).
@@ -262,7 +264,7 @@ $product->requestToPay($externalId, $partyId, $amount, $currency, $payerMessage 
 
 ```php
 <?php
-require 'vendor/autoload.php';
+require 'vendor/autoload.php'; // à enlever si vous travailler avec un framework
 use Kouyatekarim\Momoapi\Products\Collection;
 
 
