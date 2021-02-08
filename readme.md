@@ -329,4 +329,4 @@ $product->requestToPay($externalId, $partyId, $amount, $currency, $payerMessage 
 ```
 
 ### Bugs
-Pour tout bug trouvé, veuillez m'envoyer un e-mail à kouyatekarim02@gmail.com ou enregistrer un problème sur [issues] (https://github.com/kkstar34/momoapi/issues)
+Pour tout bug trouvé, veuillez m'envoyer un e-mail à kouyatekarim02@gmail.com ou à pengeleglodiejuvenal@gmail.com ou enregistrer le problème sur [issues] (https://github.com/juvpengele/inventorys/issues)
